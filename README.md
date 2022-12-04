@@ -54,13 +54,20 @@ You will know you have forked and pushed properly if you see your work in Github
 
 Ali Snobba has given you the following criteria to determine completeness of your project. Note that there are no code implementation details. So you must collaborate with your partner on how best to implement the application.
 
-1. Given that I a new shopper, when I begin shopping, then I expect my cart to be empty.
-1. Given I have an empty cart, when I add an Item, then I expect to the price reflect the sum of all the Items in my cart.
-1. Given I have cart with one item, when I add more of that item, then I expect to see its quantity update on the cart.
-1. Given I have an empty cart, when I add items, then I expect it to see an itemized list of the items along with their price and quantity.
-1. Given I have a cart with items that are not on sale, when I add an item that's on sale, I expect to see it highlighted.
-1. Given I have a cart with items, when I remove an item, then I expect the cart to display the updated itemized list.
-1. Given I have one item in my cart with a quantity of 3, when I remove one, then I expect the cart to have 2 of that item.
+1. Given that I a new --shopper--, when I begin 
+shopping, then I expect my --cart-- to be empty.
+
+2. Given I have an empty --cart--, when I add an ---Item---, then I expect to the price reflect the sum of all the Items in my cart.
+
+3. Given I have cart with one item, when I add more of that item, then I expect to see its quantity update on the cart.
+
+4. Given I have an empty cart, when I add items, then I expect it to see an itemized list of the items along with their price and quantity.
+
+5. Given I have a cart with items that are not on sale, when I add an item that's on sale, I expect to see it highlighted.
+
+6. Given I have a cart with items, when I remove an item, then I expect the cart to display the updated itemized list.
+
+7. Given I have one item in my cart with a quantity of 3, when I remove one, then I expect the cart to have 2 of that item.
 
 
 ## Stretch Goals
