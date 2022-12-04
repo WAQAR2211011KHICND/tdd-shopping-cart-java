@@ -27,8 +27,9 @@ public class Cart {
             String  name     = item.Items.name;
             Long    price    = item.Items.price;
             Integer quantity = item.Quantity;
-            
-            return  "Item Name : "+ name + " \nPrice : " + price 
+            String Sales = item.Items.sale == true ? "****" :""; 
+
+            return  "Item Name : "+ Sales + name + Sales +" \nPrice : " + price 
                 +" \nQuantity : " + quantity ;
         } 
         ).toList();
@@ -53,6 +54,19 @@ public class Cart {
         this.totalPrice += item.price;
     }
 
+    void removeItem(Item item) {
+        for (int j = 0; j < this.ItemList.size(); j++) {
+            if (this.ItemList.get(j).Items.id == item.id) {
+                this.ItemList.remove(j);
+                break;
+            }
+        }
+
+        this.totalPrice -= item.price;
+    }
+
+
+    
     public Integer getItemQuantity(Long id){
         return this.ItemList.stream()
                     .filter(i -> i.Items.id==id)

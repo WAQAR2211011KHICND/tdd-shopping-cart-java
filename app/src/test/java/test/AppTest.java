@@ -106,7 +106,67 @@ void gettingItemizedList(){
     assertArrayEquals(Expected.toArray(), Actual.toArray());
     
 }
+
+
+// 5. Given I have a cart with items that are not on sale, 
+// when I add an item that's on sale, I expect to see it highlighted.
+@Test
+void getHighlightItem(){
     
+    //Setup
+    Cart cut = new Cart(); 
+    Item item1 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item2 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item3 = new Item( 2L, "Rolex watches" , 1000L, true);
+    
+    //Execute
+    cut.addItem(item1);
+    cut.addItem(item2);
+    cut.addItem(item3);
+
+    //Highlighted the sale item name with 4 Star around them. 
+    List<String> Expected = Arrays.asList(
+             "Item Name : Gooey Baton handbags \nPrice : 1000 \nQuantity : 2"
+            ,"Item Name : ****Rolex watches**** \nPrice : 1000 \nQuantity : 1"
+        );
+
+    List<String> Actual = cut.getItemsList(); 
+    
+    //Assert
+    assertArrayEquals(Expected.toArray(), Actual.toArray());
+    
+}
+
+
+// 6. Given I have a cart with items, when I remove an item,
+//    then I expect the cart to display the updated itemized list.
+@Test
+void removeITemOnCart(){
+    
+    //Setup
+    Cart cut = new Cart(); 
+    Item item1 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item2 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item3 = new Item( 2L, "Rolex watches" , 1000L, true);
+    cut.addItem(item1);
+    cut.addItem(item2);
+    cut.addItem(item3);
+    
+    //Execute
+    cut.removeItem(item3);
+
+    List<String> Expected = Arrays.asList(
+             "Item Name : Gooey Baton handbags \nPrice : 1000 \nQuantity : 2"
+            // ,"Item Name : ****Rolex watches**** \nPrice : 1000 \nQuantity : 1"
+        );
+
+    List<String> Actual = cut.getItemsList(); 
+    
+    //Assert
+    assertArrayEquals(Expected.toArray(), Actual.toArray());
+    
+}
+
 
 }
 
