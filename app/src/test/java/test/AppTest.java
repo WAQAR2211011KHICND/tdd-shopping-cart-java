@@ -53,7 +53,30 @@ class AppTest {
         assertEquals(1000L, cut.getTotalPrice());
         
     }
+
+// 3. Given I have cart with one item, 
+//     when I add more of that item, 
+//     then I expect to see its quantity update 
+//     on the cart.
+@Test
+void checkTheQuantityUpdateOfItem(){
+
+    //Setup
+    Cart cut = new Cart(); 
+    Item item1 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item2 = new Item( 1L, "Gooey Baton handbags" , 1000L);
     
+    //Execute
+    cut.addItem(item1);
+    cut.addItem(item2);
+    
+    //Assert
+    assertEquals(2000L, cut.getTotalPrice());
+    
+}
+
+// Item item3 = new Item( 2L, "Rolex watches" , 1000L);
+// cut.addItem(item3);
     
 
 }
