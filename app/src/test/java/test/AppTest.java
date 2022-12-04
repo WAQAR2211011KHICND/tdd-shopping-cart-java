@@ -8,6 +8,9 @@ import org.junit.jupiter.params.shadow.com.univocity.parsers.common.IterableResu
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class AppTest {
@@ -75,8 +78,34 @@ void checkTheQuantityUpdateOfItem(){
     
 }
 
-// Item item3 = new Item( 2L, "Rolex watches" , 1000L);
-// cut.addItem(item3);
+// 4. Given I have an empty cart, when I add items,
+//    then I expect it to see an itemized list of the items
+//    along with their price and quantity.
+
+@Test
+void gettingItemizedList(){
+    
+    //Setup
+    Cart cut = new Cart(); 
+    Item item1 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item2 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item3 = new Item( 2L, "Rolex watches" , 1000L);
+    
+    //Execute
+    cut.addItem(item1);
+    cut.addItem(item2);
+    cut.addItem(item3);
+
+    List<String> Expected = Arrays.asList(
+             "Item Name : Gooey Baton handbags \nPrice : 1000 \nQuantity : 2"
+            ,"Item Name : Rolex watches \nPrice : 1000 \nQuantity : 1"
+        );
+    List<String> Actual = cut.getItemsList(); 
+    
+    //Assert
+    assertArrayEquals(Expected.toArray(), Actual.toArray());
+    
+}
     
 
 }

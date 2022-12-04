@@ -21,8 +21,18 @@ public class Cart {
     public Cart() {
     }
 
-    public List<ItemsList> getItemsList() {
-        return this.ItemList;
+    public List<String> getItemsList() {
+        return this.ItemList.stream().map(item ->{
+            
+            String  name     = item.Items.name;
+            Long    price    = item.Items.price;
+            Integer quantity = item.Quantity;
+            
+            return  "Item Name : "+ name + " \nPrice : " + price 
+                +" \nQuantity : " + quantity ;
+        } 
+        ).toList();
+        
     }
 
     void addItem(Item item) {
