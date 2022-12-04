@@ -53,16 +53,24 @@ public class Cart {
 
         this.totalPrice += item.price;
     }
-
+    
     void removeItem(Item item) {
+        int indexOfItemsList = -1;
         for (int j = 0; j < this.ItemList.size(); j++) {
             if (this.ItemList.get(j).Items.id == item.id) {
-                this.ItemList.remove(j);
+                indexOfItemsList = j;
+                if(this.ItemList.get(j).Quantity>=2){
+                    this.ItemList.get(j).Quantity -= 1;
+                }else{
+                    this.ItemList.remove(j);
+                }
                 break;
             }
         }
+        if (indexOfItemsList != -1) {
+            this.totalPrice -= item.price;
+        }
 
-        this.totalPrice -= item.price;
     }
 
 

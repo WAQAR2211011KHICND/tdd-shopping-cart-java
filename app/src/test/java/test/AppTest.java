@@ -167,6 +167,37 @@ void removeITemOnCart(){
     
 }
 
+// 7. Given I have one item in my cart with a quantity of 3,
+//    when I remove one, then I expect the cart to have 2 of that item.
+@Test
+void reduceItemQuantity(){
+    
+    //Setup
+    Cart cut = new Cart(); 
+    Item item1 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item2 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item3 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+    Item item4 = new Item( 2L, "Rolex watches" , 1000L, true);
+    cut.addItem(item1);
+    cut.addItem(item2);
+    cut.addItem(item3);
+    cut.addItem(item4);
+    
+    //Execute
+    cut.removeItem(item3);
+
+    List<String> Expected = Arrays.asList(
+             "Item Name : Gooey Baton handbags \nPrice : 1000 \nQuantity : 2"
+            ,"Item Name : ****Rolex watches**** \nPrice : 1000 \nQuantity : 1"
+        );
+
+    List<String> Actual = cut.getItemsList(); 
+    
+    //Assert
+    assertArrayEquals(Expected.toArray(), Actual.toArray());
+    
+}
+
 
 }
 
