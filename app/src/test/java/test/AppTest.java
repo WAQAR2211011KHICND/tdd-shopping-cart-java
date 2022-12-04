@@ -37,7 +37,7 @@ class AppTest {
 //    then I expect to the price reflect the sum of all the Items
 //    in my cart.
     @Test
-    Void totalPriceWhenItemAdded(){
+    void totalPriceWhenItemAdded(){
 
         //Setup
         // Cart cut = new Cart(); 
