@@ -12,38 +12,42 @@ public class Cart {
             this.Items = items;
             this.Quantity = Quantity;
         }
-
     }
 
-    List<ItemsList> ItemsList = new ArrayList<>();
+    private List<ItemsList> ItemList = new ArrayList<>();
 
     Long totalPrice = Long.valueOf(0);
 
     public Cart() {
     }
 
-    public List<Item> getItemsList() {
-        return new ArrayList<>();
+    public List<ItemsList> getItemsList() {
+        return this.ItemList;
     }
 
     void addItem(Item item) {
-        int indexOfItemsList = -1; 
-        for (int j = 0; j < this.ItemsList.size(); j++) {
-            if(this.ItemsList.get(j).Items.id == item.id){
+        int indexOfItemsList = -1;
+        for (int j = 0; j < this.ItemList.size(); j++) {
+            if (this.ItemList.get(j).Items.id == item.id) {
                 indexOfItemsList = j;
-                ItemsList i = this.ItemsList.get(j);
-                i.Quantity += 1 ;
-                this.ItemsList.set(j, i);
+                ItemsList i = this.ItemList.get(j);
+                i.Quantity += 1;
+                this.ItemList.set(j, i);
                 break;
             }
         }
-        if(indexOfItemsList==-1){
-            this.ItemsList.add(new ItemsList(item, 1));
+        if (indexOfItemsList == -1) {
+            this.ItemList.add(new ItemsList(item, 1));
         }
 
         this.totalPrice += item.price;
     }
 
+    public Integer getItemQuantity(Long id){
+        return this.ItemList.stream()
+                    .filter(i -> i.Items.id==id)
+                    .toList().get(0).Quantity;
+    }
     public Long getTotalPrice() {
         return this.totalPrice;
     }

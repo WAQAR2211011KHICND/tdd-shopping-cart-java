@@ -27,10 +27,10 @@ class AppTest {
         Cart cut = new Cart(); 
 
         //Execute
-        List<Item> itemsList = cut.getItemsList();
+        Integer actual = cut.getItemsList().size();
 
         //Assert
-        assertEquals(0, itemsList.size());
+        assertEquals(0, actual);
 
     }
 
@@ -71,7 +71,7 @@ void checkTheQuantityUpdateOfItem(){
     cut.addItem(item2);
     
     //Assert
-    assertEquals(2000L, cut.getTotalPrice());
+    assertEquals(2, cut.getItemQuantity(1L));
     
 }
 
