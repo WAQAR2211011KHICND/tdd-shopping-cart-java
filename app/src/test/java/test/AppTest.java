@@ -4,6 +4,8 @@
 package test;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.IterableResult;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -25,7 +27,7 @@ class AppTest {
         Cart cut = new Cart(); 
 
         //Execute
-        List<Item> itemsList = cut.getItems();
+        List<Item> itemsList = cut.getItemsList();
 
         //Assert
         assertEquals(0, itemsList.size());
@@ -36,22 +38,23 @@ class AppTest {
 //    when I add an ---Item---, 
 //    then I expect to the price reflect the sum of all the Items
 //    in my cart.
+
     @Test
     void totalPriceWhenItemAdded(){
 
         //Setup
-        // Cart cut = new Cart(); 
-
+        Cart cut = new Cart(); 
+        Item item1 = new Item( 1L, "Gooey Baton handbags" , 1000L);
+        
         //Execute
-
-
+        cut.addItem(item1);
+        
         //Assert
-
-
-
+        assertEquals(1000L, cut.getTotalPrice());
+        
     }
-
-
+    
+    
 
 }
 
